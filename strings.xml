@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Lovely Enterprises</string>
+
+    <!-- Change this to your own domain once you buy hosting, e.g. https://lovelyenterprises.in -->
+    <string name="website_url">https://claude.ai/artifact/U8ALeqNRozzJFvK4PEeRgP</string>
+
+    <string name="phone_primary">+918864806766</string>
+    <string name="phone_secondary">+919084767776</string>
+    <string name="whatsapp_number">918864806766</string>
+
+    <string name="no_internet_title">इंटरनेट कनेक्शन नहीं है</string>
+    <string name="no_internet_desc">कृपया अपना इंटरनेट कनेक्शन जांचें और फिर से कोशिश करें।</string>
+    <string name="retry">फिर से कोशिश करें</string>
+    <string name="call_now">कॉल करें</string>
+    <string name="whatsapp">WhatsApp</string>
+</resources>

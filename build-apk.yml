@@ -1,0 +1,38 @@
+name: Build Android APK
+
+# Har baar jab aap GitHub par code upload/push karenge, yeh apne aap chalega
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:   # "Run workflow" button se bhi manually chala sakte hain
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout karo
+        uses: actions/checkout@v4
+
+      - name: Java setup karo
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Gradle ko executable banao
+        run: chmod +x ./gradlew || true
+
+      - name: Gradle wrapper jar download karo (agar missing ho)
+        run: |
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+            curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.6.0/gradle/wrapper/gradle-wrapper.jar
+          fi
+
+      - name: Debug APK build karo
+        run: ./gradlew assembleDebug
+
+      - name: Built APK upload karo (yahin se download hoga)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lovely-enterprises-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
